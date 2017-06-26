@@ -3,23 +3,22 @@
  */
 
 $().ready(function () {
-
+    $("#user-menu").hide();
     $("#login_form").validate({
-        submitHandler : function () {
+        submitHandler : function (form) {
+            //alert("post");
             var log_type = $("input[name='loginType']:checked").val();
-            $.post("/users/login",
-                {
-                    username: $('#login_bond_id').val(),
-                    password: $('#login_password').val(),
-                },
-                function (result) {
-
-                    if (result.code==1){
+            $(form).ajaxSubmit({
+                dataTypes: "json",
+                success: function (result) {
+                    //alert(result.code);
+                    if (result.code == 0) {
                         $("#user-menu").hide();
-                        alert("用户名或密码错误");
+                        alert(result.msg);
+                        $("#login_password").text("");
                     }
-                    else if (result.code ==0){
-                        alert("登录成功");
+                    else if (result.code == 1 || result.code == 2) {
+                        alert(result.msg);
                         //window.location.href = "/";
                         $('#login-modal').modal('hide');
                         $("#login-button").hide();
@@ -30,7 +29,7 @@ $().ready(function () {
                         $("#dropdown-user-name").text(result.userinfo.username);
                     }
                 }
-            )
+            });
         },
         rules: {
             username: {
@@ -59,5 +58,14 @@ $().ready(function () {
         }
 
     });
+});
 
+$('#jumptoregister').click(function(){
+    $('#login-modal').modal('hide');
+    $('#register-modal').modal('show');
+});
+
+$('#jumptologin').click(function(){
+    $('#login-modal').modal('show');
+    $('#register-modal').modal('hide');
 });
