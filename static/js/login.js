@@ -5,14 +5,27 @@
 var is_login = function(){
     $.get("/users/islogin",
         function(result){
-            user_info = result.user;
-            alert(user);
+            var user_name = result.body.username;
+            if (result.code == 1) {
+                $("#login-button").hide();
+                $("#register-button").hide();
+                $("#user-menu").show();
+                $("#user-side-menu").text(user_name);
+                $("#user-menu-name").text(user_name);
+                $("#dropdown-user-name").text(user_name);
+            }
+            else {
+                $("#login-button").show();
+                $("#register-button").show();
+                $("#user-menu").hide();
+                $("#user-side-menu").text("未登录");
+            }
         });
 };
 
 $().ready(function () {
     $("#user-menu").hide();
-
+    is_login();
     $("#login_form").validate({
         submitHandler : function (form) {
             //alert("post");

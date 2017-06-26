@@ -6,6 +6,12 @@ from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from newsbackend.common import respond_assemble
+# 解决编码问题
+import sys
+default_encoding = 'utf-8'
+if sys.getdefaultencoding() != default_encoding:
+    reload(sys)
+    sys.setdefaultencoding(default_encoding)
 
 def show_login(request):
     return render(request, 'login.html')
@@ -56,7 +62,7 @@ def Mylogin(request):
         if user.is_active:
             login(request,user)
             print("用户登录成功")
-            body = dict(username='123')
+            body = dict(username=username)
             return respond_assemble(code=1, msg="用户登录成功", body=body)
         else:
             print("用户已冻结")
