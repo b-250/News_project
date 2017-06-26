@@ -13,7 +13,7 @@ $().ready(function () {
                 success:function( result ){
                     if( result.code == 1 ){
                        $('#register-modal').modal('hide');
-
+                        window.location.href = "/";
                         alert("注册成功");
                     }else {
                         $('#password1').text("");

@@ -36,7 +36,7 @@ $().ready(function () {
                     if (result.code == 1) {
                         alert(result.msg);
                         var user_name = result.body.username;
-                        //window.location.href = "/";
+                        window.location.href = "/";
                         $('#login-modal').modal('hide');
                         $("#login-button").hide();
                         $("#register-button").hide();
@@ -98,6 +98,7 @@ $('#logout').click(function(){
         function(result){
             if (result.code==0) {
                 alert("登出成功");
+                window.location.href = "/";
                 $("#login-button").show();
                 $("#register-button").show();
                 $("#user-menu").hide();
