@@ -2,8 +2,17 @@
  * Created by pankaicheng on 17/4/23.
  */
 
+var is_login = function(){
+    $.get("/users/islogin",
+        function(result){
+            user_info = result.user;
+            alert(user);
+        });
+};
+
 $().ready(function () {
     $("#user-menu").hide();
+
     $("#login_form").validate({
         submitHandler : function (form) {
             //alert("post");
@@ -11,22 +20,22 @@ $().ready(function () {
             $(form).ajaxSubmit({
                 dataTypes: "json",
                 success: function (result) {
-                    //alert(result.code);
-                    if (result.code == 0) {
-                        $("#user-menu").hide();
+                    if (result.code == 1) {
                         alert(result.msg);
-                        $("#login_password").text("");
-                    }
-                    else if (result.code == 1 || result.code == 2) {
-                        alert(result.msg);
+                        var user_name = result.body.username;
                         //window.location.href = "/";
                         $('#login-modal').modal('hide');
                         $("#login-button").hide();
                         $("#register-button").hide();
                         $("#user-menu").show();
-                        $("#usermenu").text(result.userinfo.username);
-                        $("#user-menu-name").text(result.userinfo.username);
-                        $("#dropdown-user-name").text(result.userinfo.username);
+                        $("#user-side-menu").text(user_name);
+                        $("#user-menu-name").text(user_name);
+                        $("#dropdown-user-name").text(user_name);
+                    }
+                    else if (result.code == 0) {
+                        $("#user-menu").hide();
+                        alert(result.msg);
+                        $("#login_password").text("");
                     }
                 }
             });
@@ -68,4 +77,18 @@ $('#jumptoregister').click(function(){
 $('#jumptologin').click(function(){
     $('#login-modal').modal('show');
     $('#register-modal').modal('hide');
+});
+
+$('#logout').click(function(){
+    //alert("logout");
+    $.get("users/logout",
+        function(result){
+            if (result.code==0) {
+                alert("登出成功");
+                $("#login-button").show();
+                $("#register-button").show();
+                $("#user-menu").hide();
+                $("#user-side-menu").text("未登录");
+            }
+        });
 });

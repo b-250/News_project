@@ -46,26 +46,47 @@ def Mylogin(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
     #print(username)
+    '''
+    if request.user.is_authenticated():
+        print("用户已登录")
+        return respond_assemble(code=0, msg="用户已登录")
+    '''
     user = authenticate(username=username, password=password)
     if user is not None:
         if user.is_active:
             login(request,user)
             print("用户登录成功")
-            return respond_assemble(code=1, msg="用户登录成功")
+            body = dict(username='123')
+            return respond_assemble(code=1, msg="用户登录成功", body=body)
         else:
             print("用户已冻结")
-            return respond_assemble(code=2, msg="用户已冻结")
+            return respond_assemble(code=0, msg="用户已冻结")
     else:
         print("用户名或密码错误")
         return respond_assemble(code=0, msg='用户名或密码错误')
 
 
 @csrf_exempt
+def islogin(request):
+    """
+    验证用户是否登录
+    :param request:
+    :return: 用户是否登录
+    """
+    if request.user.is_authenticated():
+        print("用户已经登录了")
+        body = dict(username=request.user.get_username())
+        return respond_assemble(code=1, msg="用户已经登录",body=body)
+    else :
+        print("用户未登录")
+        return respond_assemble(code=0, msg="用户未登录")
+
+@csrf_exempt
 def Mylogout(request):
     """
     用户注销
     :param request:
-    :return:
+    :return: 是否注销成功
     """
     logout(request)
     return respond_assemble(code=0, msg='用户登出成功')

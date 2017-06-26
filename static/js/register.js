@@ -2,30 +2,9 @@
  * Created by pankaicheng on 17/6/26.
  */
 
-var user_valid = function () {
-    $.get("/login",
-        function (result) {
-            //alert("int the user_valid");
-            user_info = result.userinfo;
-            //alert(user_info.username);
-            if(user_info.username!=""){
-                $("#login-button").hide();
-                $("#register-button").hide();
-                $("#user-menu").show();
-                $("#usermenu").text(result.userinfo.username);
-                $("#user-menu-name").text(user_info.username);
-                $("#dropdown-user-name").text(result.userinfo.username);
-            }
-            else{
-                $("#user-menu").hide();
-                $("#login-button").show();
-                $("#register-button").show();
-            }
-        });
-};
 
 $().ready(function () {
-    user_valid();
+    //user_valid();
     //alert("open the window");
     $("#register_form").validate({
         submitHandler : function(form) {
