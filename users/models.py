@@ -11,3 +11,7 @@ class MyUser(AbstractUser):
         max_length=32,
         verbose_name='昵称'
     )
+    phone = models.CharField(
+        max_length=11,
+        verbose_name='手机'
+    )

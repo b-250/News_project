@@ -34,7 +34,7 @@ $().ready(function () {
         rules: {
             username: {
                 required: true,
-                minlength: 6,
+                minlength: 5,
                 maxlength: 20
             },
             password: {

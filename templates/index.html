@@ -197,7 +197,7 @@ desired effect
                                 <label for="login_password" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">密码:</label>
                             </div>
                             <div class="col-md-7 col-xs-7" >
-                                <input id="login_password" type="password" name="password" class="form-control input-lg" placeholder="请输入登陆密码(至少6个字符)">
+                                <input id="login_password" type="password" name="password" class="form-control input-lg" placeholder="请输入登陆密码(至少5个字符)">
                             </div>
 
                         </div>
@@ -233,8 +233,8 @@ desired effect
                         <h3 class="modal-title" id="myModalLabel" style="color: #4295c5;">注册</h3>
                     </div>
                 </div>
-                <div class="modal-body" align="center">
-                    <form class="form-horizontal" role="form" method = "post" action = "/register" id="register_form" novalidate="novalidate">
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" method = "post" action = "/users/register" id="register_form" novalidate="novalidate">
 
                         <div><br></div>
                         <div><br></div>
@@ -244,7 +244,7 @@ desired effect
                                 <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
                             </div>
                             <div class="col-md-7 col-xs-7">
-                                <input type="text" class="form-control input-lg" id="bond_id" name="username" placeholder="请输入用户名(至少6个字符)">
+                                <input type="text" class="form-control input-lg" id="bond_id" name="username" placeholder="请输入用户名(至少5个字符)">
                             </div>
                         </div>
                         <div class="form-group">
