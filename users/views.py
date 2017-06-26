@@ -33,3 +33,12 @@ def createUser(request):
         user = MyUser.objects.create_user(username=username, password=password, email=email)
         print(user.get_username())
         return respond_assemble(code=0, msg='注册成功')
+
+@require_POST
+@csrf_exempt
+def login(request):
+    """
+    用户登录
+    :return:
+    """
+    return respond_assemble(code=0, msg='登录')
