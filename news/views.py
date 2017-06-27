@@ -28,7 +28,7 @@ def change2json(news_list):
 @csrf_exempt
 def get_news(request):
     last = Mynews.objects.last()
-    news_list = Mynews.objects.filter(id__gte=last.id-10)
+    news_list = Mynews.objects.filter(id__gt=last.id-10)
 
     body = change2json(news_list)
     #print(news_list)
@@ -42,9 +42,9 @@ def news_update(request):
     for new in news_list:
         channel = new['category']
         src = new['src']
-        mobileurl = new['weburl']
+        mobileurl = new['url']
         title = new['title']
-        weburl = new['url']
+        weburl = new['weburl']
         pic = new['pic']
         time = new['time']
         savepath = new['savepath']

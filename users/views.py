@@ -13,9 +13,6 @@ if sys.getdefaultencoding() != default_encoding:
     reload(sys)
     sys.setdefaultencoding(default_encoding)
 
-def show_login(request):
-    return render(request, 'login.html')
-
 @require_POST
 @csrf_exempt
 def createUser(request):

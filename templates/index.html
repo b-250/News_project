@@ -128,10 +128,10 @@ desired effect
             </div>
 
             <!-- Sidebar Menu -->
-            <ul class="sidebar-menu">
+            <ul class="sidebar-menu" id="sidebar-id">
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active" id = "new-recommend"><a href="/?channel=推荐"><i class="fa fa-send"></i> <span style = "font-size:16px">推荐</span></a></li>
-                <li id = "new-news"><a href="/?channel=新闻"><i class="fa fa-send"></i> <span style = "font-size:16px">新闻</span></a></li>
+                <li class="active" id = "new-recommend"><a href=""><i class="fa fa-send"></i> <span style = "font-size:16px">推荐</span></a></li>
+                <li id = "new-news"><a href=""><i class="fa fa-send"></i> <span style = "font-size:16px">新闻</span></a></li>
                 <li id = "finance-news"><a href="/?channel=财经"><i class="fa fa-send"></i> <span style = "font-size:16px">财经</span></a></li>
                 <li id = "sports-news"><a href="/?channel=体育"><i class="fa fa-send"></i> <span style = "font-size:16px">体育</span></a></li>
                 <li id = "ent-news"><a href="/?channel=娱乐"><i class="fa fa-send"></i> <span style = "font-size:16px">娱乐</span></a></li>
@@ -312,8 +312,8 @@ desired effect
                     <!--<div class="box-header with-border">-->
                     <!--<h3 class="box-title">头条</h3>-->
                     <!--</div>-->
-                    <div id="load-button"></div>
-                    <div class="box-body" id = "news_body1">
+                    <div id="load-buttom"></div>
+                    <!--<div class="box-body" id = "news_body1">
                             <div class = "col-md-12 col-xs-12" >
                                 <div class="col-md-3 col-xs-5" >
                                     <a class="img-wrap" target="_blank" href="/">
@@ -343,7 +343,7 @@ desired effect
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
@@ -388,6 +388,7 @@ desired effect
 <!--login & register files-->
 <script src="{% static 'js/register.js'%}" charset="utf-8"></script>
 <script src="{% static 'js/login.js'%}" charset="utf-8"></script>
+<script src="{% static 'js/news.js'%}" charset="utf-8"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
