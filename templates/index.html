@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
+    <title>从心看天下</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -307,44 +307,41 @@ desired effect
 
         <!-- Main content -->
         <section class="content" style="padding-left: 0px; padding-right: 0px; padding-top: 10px">
-            <div class = "col-md-8" style = "padding-left:5px; padding-right:5px">
+            <div class = "col-md-9 col-xs-9" style = "padding-left:5px; padding-right:5px">
                 <div class="box box-default">
                     <!--<div class="box-header with-border">-->
                     <!--<h3 class="box-title">头条</h3>-->
                     <!--</div>-->
-                    <div class="box-body" id = "news">
-                            <div class = "col-md-12 col-xs-12">
+                    <div id="load-button"></div>
+                    <div class="box-body" id = "news_body1">
+                            <div class = "col-md-12 col-xs-12" >
                                 <div class="col-md-3 col-xs-5" >
                                     <a class="img-wrap" target="_blank" href="/">
                                         <img alt="" src="{% static 'images/2.jpg'%}">
                                     </a>
                                 </div>
-                                <div class = "col-md-9 col-xs-7" style = "padding-left: 40px">
+                                <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" >
                                     <div class = "title-box" >
                                         <a class = "link-title" target="_blank" href="/">
                                             title
                                         </a>
                                     </div>
+                                    <div>
+                                        abstract
+                                    </div>
                                     <div class = "extra-box col-md-12 col-xs-12 hidden-xs">
                                         <div class = "col-md-1 col-xs-2 ch-btn">
-                                            <button type="button" class="btn btn-block btn-danger btn-sm ty-btn">
                                                 channel
-                                            </button>
                                         </div>
 
                                         <div class = "col-md-3 col-xs-4 src-btn">
-                                            <button type="button" class="btn btn-block btn-primary btn-sm sc-btn">
                                                 src
-                                            </button>
                                         </div>
                                         <div class = "col-md-4 col-xs-6 time-btn">
-                                            <button type="button" class="btn btn-block btn-warning btn-sm tm-btn">
                                                 time
-                                            </button>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                     </div>
                 </div>
