@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'news',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -84,6 +85,7 @@ DATABASES = {
         'PASSWORD': '5438',
         'HOST': '127.0.0.1',
         'PORT': 3306,
+        'default-character-set': 'utf8',
     }
 }
 
