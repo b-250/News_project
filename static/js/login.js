@@ -23,7 +23,7 @@ var is_login = function(){
         });
 };
 
-var load_new = function(id, src){
+var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
     var div = $('<div></div>');//document.createElement("div");
     var divid = "news_body"+id;
     div.attr('id',divid);
@@ -33,13 +33,15 @@ var load_new = function(id, src){
 
     //div.addClass('box');
     //div.addClass('box-default');
-    var imgdiv = $('<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="/"> <img alt="" src="{% static "images/2.jpg"%}"> </a> </div>')
+    var imgname = img;
+    var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="'+ newsurl + '"> <img alt="" src='+ imgname +'>'+ '</a> </div>';
+    var imgdiv = $(imgdiv_);
     var textdiv = $(' <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" style = "padding-left: 40px"></div>');
-    var titlediv = $('<div class = "title-box" > <a class = "link-title" target="_blank" href="/"> title </a> </div>');
-    var absdiv = $('<div>abstract </div>');
-    var chdiv = $('<div class = "col-md-1 col-xs-2 ch-btn">channel</div>');
-    var srcdiv = $('<div class = "col-md-3 col-xs-4 src-btn">src</div>');
-    var timediv = $('<div class = "col-md-4 col-xs-6 time-btn">time</div>');
+    var titlediv = $('<div class = "title-box" > <a class = "link-title" target="_blank" href="/">'+ title +'</a> </div>');
+    var absdiv = $('<div>'+abstract+'</div>');
+    var chdiv = $('<div class = "col-md-2 col-xs-3 ch-btn">'+channel+'</div>');
+    var srcdiv = $('<div class = "col-md-3 col-xs-3 src-btn">来源:'+src+'</div>');
+    var timediv = $('<div class = "col-md-3 col-xs-5 time-btn">'+time+'</div>');
     var footdiv = $('<div class = "extra-box col-md-12 col-xs-12 hidden-xs"></div>');
     var boxdiv = $('<div class = "col-md-12 col-xs-12" ></div>');
     footdiv.append(chdiv);
@@ -52,14 +54,27 @@ var load_new = function(id, src){
     boxdiv.append(textdiv);
     div.append(boxdiv);
     //div.append('<div class = "col-md-12 col-xs-12" >   </div>');
+
     $("#load-button").after(div);
+    //div.after('<hr/>');
+    $("#load-button").remove();
+    div.after('<hr/><div id="load-button"></div>');
+
+};
+
+var load_new = function(num){
+
+    for(var i=0; i<num; i++)
+    {
+        add_new(i,'test_news','/','/static/images/2.jpg','新浪','新闻','2017-6-28','this is news abstract');
+    }
 };
 
 
 $().ready(function () {
     $("#user-menu").hide();
     is_login();
-    load_new(2,'/');
+    load_new(10);
     $("#login_form").validate({
         submitHandler : function (form) {
             //alert("post");
