@@ -19,7 +19,7 @@ var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
     var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="'+ newsurl + '"> <img alt="" src='+ imgname +'>'+ '</a> </div>';
     var imgdiv = $(imgdiv_);
     var textdiv = $(' <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" style = "padding-left: 40px"></div>');
-    var titlediv = $('<div class = "title-box" > <a class = "link-title" target="_blank" href="'+ newsurl+'">'+ title +'</a> </div>');
+    var titlediv = $('<div class = "title-box col-md-10 col-xs-10" > <a class = "link-title" target="_blank" href="'+ newsurl+'">'+ title +'</a> </div>');
     var absdiv = $('<div>'+' '+'</div>');
     var chdiv = $('<div class = "col-md-1 col-xs-2 ch-btn">'+channel+'</div>');
     if(src=='')
@@ -28,7 +28,7 @@ var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
     if(time=='')
         time = '刚刚';
     var timediv = $('<div class = "col-md-5 col-xs-6 time-btn">时间:'+time+'</div>');
-    var footdiv = $('<div class = "extra-box col-md-12 col-xs-12 hidden-xs"></div>');
+    var footdiv = $('<div class = "extra-box col-md-offset-1 col-xs-offset-1 col-md-11 col-xs-11 hidden-xs"></div>');
     var boxdiv = $('<div class = "col-md-12 col-xs-12" ></div>');
     footdiv.append(chdiv);
     footdiv.append(srcdiv);

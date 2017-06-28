@@ -138,7 +138,7 @@ class mynews:
             time.sleep(10)
             channel_list = newsapi.get_channel(1)
         '''
-        channel_list = ['头条']#, '新闻', '财经', '体育', '娱乐', '军事', '教育', '科技', 'NBA', '股票']
+        channel_list = ['头条', '新闻', '财经', '体育', '娱乐', '军事', '教育', '科技', 'NBA', '股票']
         print(channel_list)
         new_file_list = []
         #num = 10
