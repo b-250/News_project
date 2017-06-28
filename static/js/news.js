@@ -21,19 +21,20 @@ var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
     var textdiv = $(' <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" style = "padding-left: 40px"></div>');
     var titlediv = $('<div class = "title-box col-md-10 col-xs-10" > <a class = "link-title" target="_blank" href="'+ newsurl+'">'+ title +'</a> </div>');
     var absdiv = $('<div>'+' '+'</div>');
-    var chdiv = $('<div class = "col-md-1 col-xs-2 ch-btn">'+channel+'</div>');
+    var chdiv = $('<div class = "col-md-2 col-xs-3 ch-btn">分类:'+channel+'</div>');
     if(src=='')
         src = "新浪网";
-    var srcdiv = $('<div class = "col-md-4 col-xs-4 src-btn">来源:'+src+'</div>');
+    var srcdiv = $('<div class = "col-md-3 col-xs-3 src-btn">来源:'+src+'</div>');
     if(time=='')
         time = '刚刚';
-    var timediv = $('<div class = "col-md-5 col-xs-6 time-btn">时间:'+time+'</div>');
-    var footdiv = $('<div class = "extra-box col-md-offset-1 col-xs-offset-1 col-md-11 col-xs-11 hidden-xs"></div>');
+    var timediv = $('<div class = "col-md-5 col-xs-5 time-btn">时间:'+time+'</div>');
+    var footdiv = $('<div class = "col-md-offset-1 col-xs-offset-1 col-md-11 col-xs-11 hidden-xs"></div>');
     var boxdiv = $('<div class = "col-md-12 col-xs-12" ></div>');
     footdiv.append(chdiv);
     footdiv.append(srcdiv);
     footdiv.append(timediv);
     textdiv.append(titlediv);
+    textdiv.append('<div class="col-md-10 col-xs-10"><br/></div>');
     textdiv.append(absdiv);
     textdiv.append(footdiv);
     boxdiv.append(imgdiv);
@@ -111,12 +112,12 @@ var load_new = function(num,channel,channelname){
 
 $().ready(function () {
 
-    load_new(10,'rec','新闻');
+    load_new(10,'rec','头条');
 
 });
 
 var thischannel = 'rec';
-
+var thischannelname = '头条';
 $("#new-recommend").click(function(){
     var activeli =$("ul li.active");
     activeli.attr("class","");
@@ -124,6 +125,7 @@ $("#new-recommend").click(function(){
     clear_news();
     load_new(10,'rec',"头条");
     thischannel = 'rec';
+    thischannelname = '头条';
     cnt = 0;
 });
 
@@ -134,6 +136,7 @@ $("#news-news").click(function(){
     clear_news();
     load_new(10,'news',"新闻");
     thischannel = 'news';
+    thischannelname = '新闻';
     cnt = 0;
 });
 
@@ -144,6 +147,7 @@ $("#finance-news").click(function(){
     clear_news();
     load_new(10,'finance',"财经");
     thischannel = 'finance';
+    thischannelname = '财经';
     cnt = 0;
 });
 
@@ -152,8 +156,9 @@ $("#sports-news").click(function(){
     activeli.attr("class","");
     $("#sports-news").attr("class","active");
     clear_news();
-    load_new(10,'sports',"运动");
+    load_new(10,'sports',"体育");
     thischannel = 'sports';
+    thischannelname = '体育';
     cnt =0;
 });
 
@@ -164,6 +169,7 @@ $("#ent-news").click(function(){
     clear_news();
     load_new(10,'ent',"娱乐");
     thischannel = 'ent';
+    thischannelname = '娱乐';
     cnt = 0;
 });
 
@@ -174,6 +180,7 @@ $("#mil-news").click(function(){
     clear_news();
     load_new(10,'mil',"军事");
     thischannel = 'mil';
+    thischannelname = '军事';
     cnt =0 ;
 });
 
@@ -184,6 +191,7 @@ $("#edu-news").click(function(){
     clear_news();
     load_new(10,'edu',"教育");
     thischannel = 'edu';
+    thischannelname = '教育';
     cnt = 0;
 });
 
@@ -194,6 +202,7 @@ $("#tech-news").click(function(){
     clear_news();
     load_new(10,'tech',"科技");
     thischannel = 'tech';
+    thischannelname = '科技';
     cnt = 0;
 });
 
@@ -204,6 +213,7 @@ $("#nba-news").click(function(){
     clear_news();
     load_new(10,'nba',"NBA");
     thischannel = 'nba';
+    thischannelname = 'NBA';
     cnt = 0;
 });
 
@@ -214,6 +224,7 @@ $("#stock-news").click(function(){
     clear_news();
     load_new(10,'stock',"股票");
     thischannel = 'stock';
+    thischannelname = '股票';
     cnt = 0;
 });
 
@@ -229,7 +240,7 @@ $(window).scroll(function(){
     var winH = window.innerHeight || document.documentElement.clientHeight||document.body.clientHeight;
     if (top+winH >= height){
         //alert('at buttom');
-        load_new(10,thischannel,"新闻");
+        load_new(10,thischannel,thischannelname);
     }
 });
 

@@ -1,6 +1,6 @@
 # encoding: utf-8
 from django.shortcuts import render
-from users.models import MyUser
+from users.models import MyUser, UserSetting
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST, require_GET
 from django.contrib.auth import authenticate, login, logout
@@ -36,6 +36,8 @@ def createUser(request):
         return respond_assemble(code=0, msg='邮箱已被注册')
     else:
         user = MyUser.objects.create_user(username=username, password=password, email=email, phone=phone)
+        setting = UserSetting.objects.create(userid=user,finance=5,sports=5,ent=5,mil=5,edu=5,tech=5,nba=5,stock=5)
+        print(setting)
         print(user.get_username())
         return respond_assemble(code=1, msg='注册成功')
 

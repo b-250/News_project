@@ -15,3 +15,14 @@ class MyUser(AbstractUser):
         max_length=11,
         verbose_name='手机'
     )
+
+class UserSetting(models.Model):
+    userid = models.ForeignKey(MyUser)
+    finance = models.IntegerField()
+    sports = models.IntegerField()
+    ent = models.IntegerField()
+    mil = models.IntegerField()
+    edu = models.IntegerField()
+    tech = models.IntegerField()
+    nba = models.IntegerField()
+    stock = models.IntegerField()

@@ -16,3 +16,5 @@
 *.json
 
 news/migrations/__init__.py
+
+*.pyc

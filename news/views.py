@@ -4,7 +4,7 @@ from django.shortcuts import render
 from news.models import Mynews
 from django.views.decorators.csrf import csrf_exempt
 from newsbackend.common import respond_assemble
-
+from users.models import UserSetting
 import getnews
 
 def showindex(request):
@@ -25,12 +25,43 @@ def change2json(news_list):
         news_json_list.append(news_json)
     return  news_json_list
 
+def update_setting(channel, likelist, num):
+    if channel == 'finance':
+        likelist.finance = likelist.finance+num
+        likelist.save()
+    elif channel == 'sports':
+        likelist.sports = likelist.sports+num
+        likelist.save()
+    elif channel == 'ent':
+        likelist.ent = likelist.ent+num
+        likelist.save()
+    elif channel == 'mil':
+        likelist.mil = likelist.mil+num
+        likelist.save()
+    elif channel == 'edu':
+        likelist.edu = likelist.edu+num
+        likelist.save()
+    elif channel == 'tech':
+        likelist.tech = likelist.tech+num
+        likelist.save()
+    elif channel == 'nba':
+        likelist.nba = likelist.nba+num
+        likelist.save()
+    elif channel == 'stock':
+        likelist.stock = likelist.stock+num
+        likelist.save()
+
 @csrf_exempt
 def get_news(request):
     channel = request.POST.get('channel')
     num = int(request.POST.get('num'))
     begin = int(request.POST.get('begin'))
     print(channel)
+    if request.user.is_authenticated():
+        user = request.user
+        likelist = UserSetting.objects.get(userid=user.id)
+        update_setting(channel,likelist,2)
+
     if channel == 'rec':
         if request.user.is_authenticated():
             last = Mynews.objects.last()
@@ -39,7 +70,7 @@ def get_news(request):
             news_channel = Mynews.objects.filter(channel='hot')
             order_news = news_channel.order_by('-id')
             news_list = order_news.all()[0:num]
-    else :
+    else:
         news_channel = Mynews.objects.filter(channel=channel)
         order_news = news_channel.order_by('-id')
         end = begin + num

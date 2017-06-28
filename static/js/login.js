@@ -10,7 +10,7 @@ var is_login = function(){
                 $("#login-button").hide();
                 $("#register-button").hide();
                 $("#user-menu").show();
-                $("#user-side-menu").text(user_name);
+                $("#user-side-menu").html(user_name);
                 $("#user-menu-name").text(user_name);
                 $("#dropdown-user-name").text(user_name);
             }
@@ -18,7 +18,7 @@ var is_login = function(){
                 $("#login-button").show();
                 $("#register-button").show();
                 $("#user-menu").hide();
-                $("#user-side-menu").text("未登录");
+                $("#user-side-menu").html("未登录");
             }
         });
 };
@@ -41,7 +41,7 @@ $().ready(function () {
                         $("#login-button").hide();
                         $("#register-button").hide();
                         $("#user-menu").show();
-                        $("#user-side-menu").text(user_name);
+                        $("#user-side-menu").html(user_name);
                         $("#user-menu-name").text(user_name);
                         $("#dropdown-user-name").text(user_name);
                     }
@@ -102,7 +102,7 @@ $('#logout').click(function(){
                 $("#login-button").show();
                 $("#register-button").show();
                 $("#user-menu").hide();
-                $("#user-side-menu").text("未登录");
+                $("#user-side-menu").html("未登录");
             }
         });
 });
