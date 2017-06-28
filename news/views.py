@@ -28,7 +28,8 @@ def change2json(news_list):
 @csrf_exempt
 def get_news(request):
     channel = request.POST.get('channel')
-    num = request.POST.get('num')
+    num = int(request.POST.get('num'))
+    begin = int(request.POST.get('begin'))
     print(channel)
     if channel == 'rec':
         if request.user.is_authenticated():
@@ -41,7 +42,8 @@ def get_news(request):
     else :
         news_channel = Mynews.objects.filter(channel=channel)
         order_news = news_channel.order_by('-id')
-        news_list = order_news.all()[0:num]
+        end = begin + num
+        news_list = order_news.all()[begin:end]
         #last = news_channel.last()
 
         #news_list = news_channel.filter(id__gt=last.id-10)

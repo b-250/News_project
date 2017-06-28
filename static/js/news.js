@@ -67,7 +67,8 @@ var load_new = function(num,channel,channelname){
     $.post("/getnews",
         {
             channel: channel,
-            num : num
+            num : num,
+            begin : cnt
         },
         function(result){
             if (result.code == 1){
@@ -90,12 +91,26 @@ $().ready(function () {
 
 });
 
+var thischannel = 'rec';
+
+$("#new-recommend").click(function(){
+    var activeli =$("ul li.active");
+    activeli.attr("class","");
+    $("#new-recommend").attr("class","active");
+    clear_news();
+    load_new(10,'rec',"头条");
+    thischannel = 'rec';
+    cnt = 0;
+});
+
 $("#news-news").click(function(){
     var activeli =$("ul li.active");
     activeli.attr("class","");
     $("#news-news").attr("class","active");
     clear_news();
     load_new(10,'news',"新闻");
+    thischannel = 'news';
+    cnt = 0;
 });
 
 $("#finance-news").click(function(){
@@ -104,6 +119,8 @@ $("#finance-news").click(function(){
     $("#finance-news").attr("class","active");
     clear_news();
     load_new(10,'finance',"财经");
+    thischannel = 'finance';
+    cnt = 0;
 });
 
 $("#sports-news").click(function(){
@@ -112,6 +129,8 @@ $("#sports-news").click(function(){
     $("#sports-news").attr("class","active");
     clear_news();
     load_new(10,'sports',"运动");
+    thischannel = 'sports';
+    cnt =0;
 });
 
 $("#ent-news").click(function(){
@@ -120,6 +139,8 @@ $("#ent-news").click(function(){
     $("#ent-news").attr("class","active");
     clear_news();
     load_new(10,'ent',"娱乐");
+    thischannel = 'ent';
+    cnt = 0;
 });
 
 $("#mil-news").click(function(){
@@ -128,6 +149,8 @@ $("#mil-news").click(function(){
     $("#mil-news").attr("class","active");
     clear_news();
     load_new(10,'mil',"军事");
+    thischannel = 'mil';
+    cnt =0 ;
 });
 
 $("#edu-news").click(function(){
@@ -136,6 +159,8 @@ $("#edu-news").click(function(){
     $("#edu-news").attr("class","active");
     clear_news();
     load_new(10,'edu',"教育");
+    thischannel = 'edu';
+    cnt = 0;
 });
 
 $("#tech-news").click(function(){
@@ -144,6 +169,8 @@ $("#tech-news").click(function(){
     $("#tech-news").attr("class","active");
     clear_news();
     load_new(10,'tech',"科技");
+    thischannel = 'tech';
+    cnt = 0;
 });
 
 $("#nba-news").click(function(){
@@ -152,6 +179,8 @@ $("#nba-news").click(function(){
     $("#nba-news").attr("class","active");
     clear_news();
     load_new(10,'nba',"NBA");
+    thischannel = 'nba';
+    cnt = 0;
 });
 
 $("#stock-news").click(function(){
@@ -160,5 +189,23 @@ $("#stock-news").click(function(){
     $("#stock-news").attr("class","active");
     clear_news();
     load_new(10,'stock',"股票");
+    thischannel = 'stock';
+    cnt = 0;
+});
+
+
+$(window).scroll(function(){
+    /*if (getScrollTop()+ getClientHeight()>flagPos){
+        alert(getScrollTop());
+        alert(flagPos);
+        alert(getClientHeight());
+    }*/
+    var top = document.documentElement.scrollTop || document.body.scrollTop;
+    var height = document.documentElement.scrollHeight || document.body.scrollHeight;
+    var winH = window.innerHeight || document.documentElement.clientHeight||document.body.clientHeight;
+    if (top+winH >= height){
+        alert('at buttom');
+        load_new(10,thischannel,"新闻");
+    }
 });
 
