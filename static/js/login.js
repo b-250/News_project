@@ -23,8 +23,6 @@ var is_login = function(){
         });
 };
 
-
-
 $().ready(function () {
     $("#user-menu").hide();
     is_login();

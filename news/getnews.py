@@ -138,7 +138,7 @@ class mynews:
             time.sleep(10)
             channel_list = newsapi.get_channel(1)
         '''
-        channel_list = ['头条', '新闻', '财经', '体育', '娱乐', '军事', '教育', '科技', 'NBA', '股票']
+        channel_list = ['头条', '新闻', '娱乐', '军事', '教育', '科技', 'NBA', '股票','体育','财经']
         print(channel_list)
         new_file_list = []
         #num = 10
@@ -159,7 +159,6 @@ class mynews:
             channel_new_file_list =[]
             for i in range(0, num):
                 #print(i)
-                print(news_list[i])
                 filename = mynews.store_json(news_list[i], channel)
                 channel_new_file_list.append(filename)
                 news_list[i]['savepath'] = filename
@@ -170,6 +169,7 @@ class mynews:
                 if(channel == '股票'):
                     news_list[i]['channel'] = 'stock'
                 new_file_list.append(news_list[i])
+                print(news_list[i])
             mynews.store_list(channel_new_file_list,channel)
         return new_file_list
 

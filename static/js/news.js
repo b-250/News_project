@@ -49,6 +49,25 @@ var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
 };
 
 var cnt = 0;
+var opts = {
+    lines: 13, // 花瓣数目
+    length: 9, // 花瓣长度
+    width: 5, // 花瓣宽度
+    radius: 9, // 花瓣距中心半径
+    corners: 1, // 花瓣圆滑度 (0-1)
+    rotate: 0, // 花瓣旋转角度
+    direction: 1, // 花瓣旋转方向 1: 顺时针, -1: 逆时针
+    color: '#5882FA', // 花瓣颜色
+    speed: 1, // 花瓣旋转速度
+    trail: 60, // 花瓣旋转时的拖影(百分比)
+    shadow: false, // 花瓣是否显示阴影
+    hwaccel: false, //spinner 是否启用硬件加速及高速旋转
+    className: 'spinner', // spinner css 样式名称
+    zIndex: 2e9, // spinner的z轴 (默认是2000000000)
+    top: 'auto', // spinner 相对父容器Top定位 单位 px
+    left: window.innerWidth/3// spinner 相对父容器Left定位 单位 px
+};
+var spinner = new Spinner(opts);
 
 var clear_news = function(){
     for(var i=0; i<cnt; i++){
@@ -64,6 +83,8 @@ var clear_news = function(){
 
 var load_new = function(num,channel,channelname){
     var news_list;
+    var target = $("#load-buttom").get(0);
+    spinner.spin(target);
     $.post("/getnews",
         {
             channel: channel,
@@ -73,7 +94,7 @@ var load_new = function(num,channel,channelname){
         function(result){
             if (result.code == 1){
                 news_list = result.body;
-                alert(news_list.length);
+                //alert(news_list.length);
                 //alert(news_list[1].src);
                 for(var i=0; i<news_list.length; i++)
                 {
@@ -83,6 +104,9 @@ var load_new = function(num,channel,channelname){
             }
         }
     );
+    // 关闭spin
+    setTimedOut(1000);
+    spinner.spin();
 };
 
 $().ready(function () {
@@ -204,7 +228,7 @@ $(window).scroll(function(){
     var height = document.documentElement.scrollHeight || document.body.scrollHeight;
     var winH = window.innerHeight || document.documentElement.clientHeight||document.body.clientHeight;
     if (top+winH >= height){
-        alert('at buttom');
+        //alert('at buttom');
         load_new(10,thischannel,"新闻");
     }
 });
