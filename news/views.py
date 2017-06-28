@@ -110,8 +110,21 @@ def news_update(request):
 
 @csrf_exempt
 def news_content(request):
-    newsid = request.GET.get('newsid')
+    #newsid = int(request.GET.get('newsid'))
+    #print(newsid)
     return render(request,'newscontent.html')
+
+@csrf_exempt
+def get_content(request):
+    newsid = int(request.GET.get('newsid'))
+    print(newsid)
+    newscontent = Mynews.objects.get(id = newsid)
+    savepath = newscontent.savepath
+    cotent = getnews.mynews.load_json(savepath)
+    print(cotent)
+    body = dict(title=newscontent.title,time=newscontent.time,weburl=newscontent.weburl,content=cotent,channel=newscontent.channel,src=newscontent.src)
+    return respond_assemble(code=1,body=body)
+    #return respond_assemble(code=0)
 
 if __name__=="__main__":
     news_update()
