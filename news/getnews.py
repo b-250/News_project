@@ -163,6 +163,12 @@ class mynews:
                 filename = mynews.store_json(news_list[i], channel)
                 channel_new_file_list.append(filename)
                 news_list[i]['savepath'] = filename
+                if(channel == '头条'):
+                    news_list[i]['channel'] = 'hot'
+                if(channel == 'NBA'):
+                    news_list[i]['channel'] = 'nba'
+                if(channel == '股票'):
+                    news_list[i]['channel'] = 'stock'
                 new_file_list.append(news_list[i])
             mynews.store_list(channel_new_file_list,channel)
         return new_file_list

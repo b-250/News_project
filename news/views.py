@@ -21,17 +21,32 @@ def change2json(news_list):
         news_json['weburl'] = news.weburl
         news_json['time'] = news.time
         news_json['pic'] = news.pic
-        print(news_json)
+        #print(news_json)
         news_json_list.append(news_json)
     return  news_json_list
 
 @csrf_exempt
 def get_news(request):
-    last = Mynews.objects.last()
-    news_list = Mynews.objects.filter(id__gt=last.id-10)
+    channel = request.POST.get('channel')
+    num = request.POST.get('num')
+    print(channel)
+    if channel == 'rec':
+        if request.user.is_authenticated():
+            last = Mynews.objects.last()
+            news_list = Mynews.objects.filter(id__gt = last.id-10)
+        else:
+            news_channel = Mynews.objects.filter(channel='hot')
+            order_news = news_channel.order_by('-id')
+            news_list = order_news.all()[0:num]
+    else :
+        news_channel = Mynews.objects.filter(channel=channel)
+        order_news = news_channel.order_by('-id')
+        news_list = order_news.all()[0:num]
+        #last = news_channel.last()
 
+        #news_list = news_channel.filter(id__gt=last.id-10)
     body = change2json(news_list)
-    #print(news_list)
+    print(news_list)
     return respond_assemble(code=1,msg='news',body=body)
 
 
