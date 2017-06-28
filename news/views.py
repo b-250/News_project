@@ -108,5 +108,10 @@ def news_update(request):
 
     return respond_assemble(code=1, msg='')
 
+@csrf_exempt
+def news_content(request):
+    newsid = request.GET.get('newsid')
+    return render(request,'newscontent.html')
+
 if __name__=="__main__":
     news_update()

@@ -2,7 +2,7 @@
  * Created by pankaicheng on 17/6/28.
  */
 
-var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
+var add_new = function(id, title, newsurl, img, src, channel, time, newsid){
     var div = $('<div></div>');//document.createElement("div");
     var divid = "news_body"+id;
     div.attr('id',divid);
@@ -16,10 +16,11 @@ var add_new = function(id, title, newsurl, img, src, channel, time, abstract){
         imgname = img;
     else
         imgname = "static/images/2.jpg";
-    var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="'+ newsurl + '"> <img alt="" src='+ imgname +'>'+ '</a> </div>';
+    var myurl = "/newscontent/?newsid="+newsid;
+    var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="'+ myurl + '"> <img alt="" src='+ imgname +'>'+ '</a> </div>';
     var imgdiv = $(imgdiv_);
     var textdiv = $(' <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" style = "padding-left: 40px"></div>');
-    var titlediv = $('<div class = "title-box col-md-10 col-xs-10" > <a class = "link-title" target="_blank" href="'+ newsurl+'">'+ title +'</a> </div>');
+    var titlediv = $('<div class = "title-box col-md-10 col-xs-10" > <a class = "link-title" target="_blank" href="'+ myurl+'">'+ title +'</a> </div>');
     var absdiv = $('<div>'+' '+'</div>');
     var chdiv = $('<div class = "col-md-2 col-xs-3 ch-btn">分类:'+channel+'</div>');
     if(src=='')
@@ -99,14 +100,13 @@ var load_new = function(num,channel,channelname){
                 //alert(news_list[1].src);
                 for(var i=0; i<news_list.length; i++)
                 {
-                    add_new(i+cnt,news_list[i].title,news_list[i].weburl,news_list[i].pic,news_list[i].src,channelname,news_list[i].time,'this is news abstract');
+                    add_new(i+cnt,news_list[i].title,news_list[i].weburl,news_list[i].pic,news_list[i].src,channelname,news_list[i].time,news_list[i].id);
                 }
                 cnt +=news_list.length;
             }
         }
     );
     // 关闭spin
-    setTimedOut(1000);
     spinner.spin();
 };
 

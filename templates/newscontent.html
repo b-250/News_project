@@ -1,0 +1,426 @@
+{% load staticfiles %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title id="news-title">从心看天下</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'font-awesome-4.4.0/css/font-awesome.min.css'%}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{% static 'dist/css/AdminLTE.min.css'%}">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="{% static 'dist/css/skins/skin-blue-light.min.css'%}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition sidebar-collapse skin-blue-light">
+<div class="wrapper">
+
+    <!-- Main Header -->
+    <header class="main-header">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>从心</b></span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>从心看世界</b></span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu" id="user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="{% static 'dist/img/user4-128x128.jpg'%}" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs" id="user-menu-name">Alexander Pierce</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="{% static 'dist/img/user4-128x128.jpg'%}" class="img-circle" alt="User Image">
+                                <div id="dropdown-user-name" class="input-lg" style="color: white">
+                                    <p> name </p>
+                                </div>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a data-toggle="modal" data-target="#setting-modal" href="#" class="btn btn-default btn-flat">设置</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat" id="logout">登出</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-toggle="modal" data-target="#login-modal" id="login-button"><a href = "#">登录</a></li>
+                    <li data-toggle="modal" data-target="#register-modal" id="register-button"><a href = "#">注册</a></li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <!--
+                      <li>
+                      <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>-->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login & register modal-->
+    <div class="modal fade" id="login-modal"role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div>
+                        <h3 class="modal-title" id="myModalLabel" style="color: #4295c5;">登录</h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal " role="form" method = "post" action = "/users/login"  id="login_form" novalidate="novalidate">
+
+                        <div><br></div>
+                        <div><br></div>
+
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="login_bond_id" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">用户名:</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input type="text" class="form-control input-lg" id="login_bond_id" name="username" placeholder="请输入用户名(至少6个字符)">
+                            </div>
+                            <!--<label for="user_id" class="col-sm-3 control-label">用户名</label>-->
+                            <!--<div class="col-sm-9">-->
+                            <!--<input type="text" class="form-control" id="user_id" name="user_id" value="{user_id}"-->
+                            <!--placeholder="请输入用户ID">-->
+                            <!--</div>-->
+                        </div>
+                        <div><br></div>
+
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="login_password" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">密码:</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7" >
+                                <input id="login_password" type="password" name="password" class="form-control input-lg" placeholder="请输入登陆密码(至少5个字符)">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-12 col-xs-12 no-padding">
+                            <label class="warn col-md-9 col-md-offset-3 col-xs-9" id="login_error" style="color: red"></label>
+                        </div>
+
+                        <div class="col-md-10 col-xs-10 no-padding text-right">
+                            <a id="jumptoregister"  href="#">还没注册?</a>
+                            <br><br/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-7 col-xs-offset-3 col-xs-7">
+                                <button class="btn btn-lg btn-primary btn-block input-lg" id="login-btn">立刻登录</button>
+                            </div>
+                            <!--<span><a href="newforgot.html">忘记密码</a></span>-->
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footers">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div>
+                        <h3 class="modal-title" id="myModalLabel" style="color: #4295c5;">注册</h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" method = "post" action = "/users/register" id="register_form" novalidate="novalidate">
+
+                        <div><br></div>
+                        <div><br></div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="bond_id" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">用户名:</label>
+                                <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input type="text" class="form-control input-lg" id="bond_id" name="username" placeholder="请输入用户名(至少5个字符)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="password1" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">密码:</label>
+                                <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input id="password1" type="password" name="password" class="form-control input-lg" placeholder="请输入密码(至少6个字符，数字或字母)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="password2" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">确认密码:</label>
+                                <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input id="password2" type="password"  name="repassword" class="form-control input-lg" placeholder="请再次输入密码" >
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="phone" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">手机号码:</label>
+                                <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input type="number" class="form-control input-lg" id="phone" name="phone" placeholder="请输入手机号">
+                            </div>
+                        </div>
+                        <div class="form-group" id="email_div">
+                            <div class="col-md-3 col-xs-4 no-padding text-right">
+                                <label for="email" class="login-pwd input-lg" style="color: rgba(153,153,153,1)">电子邮箱:</label>
+                                <label for="bond_id" style="color: red;" class = "hidden-xs">*</label>
+                            </div>
+                            <div class="col-md-7 col-xs-7">
+                                <input type="text" class="form-control input-lg" id="email" name="email"  placeholder="请输入邮箱" title="邮箱正确格式：xxx@xxx.com">
+                            </div>
+                        </div>
+                        <div class="col-md-10 col-xs-10 no-padding text-right">
+                            <a  href="#" id="jumptologin">立刻登录</a>
+                            <br><br/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-xs-offset-3 col-md-7 col-xs-7">
+                                <button class="btn btn-primary btn-lg btn-block">注册</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="setting-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel" style="color: #4295c5;">设置感兴趣的类别</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" method = "post" action = "/userinterest"  id="user_form" novalidate="novalidate">
+                        <div class="form-group input-lg">
+                            <div class = "col-md-12 col-xs-12">
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "finance" value = 5>  财经
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "sports" value = 5> 体育
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "ent" value = 5> 娱乐
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class = "col-md-12 col-xs-12">
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "mil" value = 5> 军事
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "edu" value = 5> 教育
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "tech" value = 5> 科技
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class = "col-md-12 col-xs-12">
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "nba" value = 5> NBA
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class = "col-md-4 col-xs-4">
+                                    <div class = "checkbox">
+                                        <label>
+                                            <input type = "checkbox" name = "stock" value = 5> 股票
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<label for="user_id" class="col-sm-3 control-label">用户名</label>-->
+                            <!--<div class="col-sm-9">-->
+                            <!--<input type="text" class="form-control" id="user_id" name="user_id" value="{user_id}"-->
+                            <!--placeholder="请输入用户ID">-->
+                            <!--</div>-->
+                        </div>
+                        <div class = "col-md-12 col-xs-12">
+                            <br/>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-4 col-md-offset-3  col-md-5 col-xs-6">
+                                <button class="btn btn-primary btn-block">提交</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+        </section>
+        <!-- Main content -->
+        <section class="content col-md-12 col-xs-12" style="padding-left: 20px; padding-right: 20px; padding-top: 10px">
+            <div class="col-md-offset-2 col-md-8 col-xs-offset-1 col-xs-10">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="article-title" id="news-title" align="center">
+                            TITLE
+                        </div>
+                        <div class="col-md-12 col-xs-12" align="center" style="font-size: large">
+                            <div class="col-md-3 col-xs-3" id="news-channel">
+                                channel
+                            </div>
+                            <div class="col-md-4 col-xs-4" id="news-src" href="/">
+                                src
+                            </div>
+                            <div class="col-md-5 col-xs-5" id="news-time">
+                                time
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body col-md-offset-1 col-md-offset-10 col-xs-offset-1 col-xs-offset-10">
+                        text
+                    </div>
+                    <div class="box-footer" align="right">
+                        <a href="/">阅读原文</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 by <a>pkc</a>.</strong> All rights reserved.
+    </footer>
+
+
+</div>
+<!-- ./wrapper -->
+<style type="text/css">
+    #register_form label.error {
+        color: Red;
+        text-align: left;
+    }
+</style>
+
+<style type="text/css">
+    #login_form label.error {
+        color: Red;
+        text-align: left;
+    }
+</style>
+<link rel="stylesheet" href="{% static 'css/mycss.css'%}">
+<!-- REQUIRED JS SCRIPTS -->
+
+<!-- jQuery 2.2.3 -->
+<script src="{% static 'plugins/jQuery/jquery-2.2.3.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.validate.min.js'%}" ></script>
+<script type="text/javascript" src="{% static 'js/jquery.form.js'%}" ></script>
+<script type="text/javascript" src="{% static 'js/spin.min.js'%}" ></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'dist/js/app.min.js'%}"></script>
+<!--login & register files-->
+<script src="{% static 'js/register.js'%}" charset="utf-8"></script>
+<script src="{% static 'js/login.js'%}" charset="utf-8"></script>
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
+</body>
+</html>
