@@ -13,12 +13,14 @@ var is_login = function(){
                 $("#user-side-menu").html(user_name);
                 $("#user-menu-name").text(user_name);
                 $("#dropdown-user-name").text(user_name);
+                $("#inoff").text('Online');
             }
             else {
                 $("#login-button").show();
                 $("#register-button").show();
                 $("#user-menu").hide();
                 $("#user-side-menu").html("未登录");
+                $("#inoff").text('Offline');
             }
         });
 };

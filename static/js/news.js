@@ -22,14 +22,14 @@ var add_new = function(id, title, newsurl, img, src, channel, time, newsid){
     var textdiv = $(' <div class = "col-md-offset-1 col-md-8 col-xs-7"></div>');
     var titlediv = $('<div class = "title-box col-md-10 col-xs-12" > <a class = "link-title" target="_blank" href="'+ myurl+'">'+ title +'</a> </div>');
     var absdiv = $('<div>'+' '+'</div>');
-    var chdiv = $('<div class = "col-md-3">分类:'+channel+'</div>');
+    var chdiv = $('<div class = "col-md-3 col-xs-3">分类:'+channel+'</div>');
     if(src=='')
         src = "新浪网";
-    var srcdiv = $('<div class = "col-md-4">来源:'+src+'</div>');
+    var srcdiv = $('<div class = "col-md- col-xs-3">来源:'+src+'</div>');
     if(time=='')
         time = '刚刚';
-    var timediv = $('<div class = "col-md-5">时间:'+time+'</div>');
-    var footdiv = $('<div class = "col-md-11 hidden-xs"></div>');
+    var timediv = $('<div class = "col-md-5 col-xs-5">时间:'+time+'</div>');
+    var footdiv = $('<div class = "col-md-11 col-xs-11 hidden-xs"></div>');
     var boxdiv = $('<div class = "col-md-12 col-xs-12" ></div>');
     footdiv.append(chdiv);
     footdiv.append(srcdiv);

@@ -53,7 +53,7 @@ def update_setting(channel, likelist, num):
         likelist.stock = likelist.stock+num
         likelist.save()
 
-def get_rec(likelist,num,base):
+def get_rec(likelist,num,basenum):
     ch_list = dict(finance=0,sports=0,ent=0,mil=0,edu=0,tech=0,nba=0,stock=0,sum=0)
     sum = 0.0
     ch_list['finance'] = likelist.finance
@@ -84,10 +84,10 @@ def get_rec(likelist,num,base):
         news = allnewslist.filter(channel=ch)
         if avg > 1:
             for i in range(avg):
-                news_list.append(news.all()[base*avg+i])
+                news_list.append(news.all()[basenum*avg+i])
         elif avg == 1:
-            print(news.all()[i].title)
-            news_list.append(news.all()[base])
+            #print(news.all()[i].title)
+            news_list.append(news.all()[basenum])
 
         #print(news_list)
     return news_list
