@@ -306,7 +306,7 @@ desired effect
                     <h4 class="modal-title" id="myModalLabel" style="color: #4295c5;">设置感兴趣的类别</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" role="form" method = "post" action = "/userinterest"  id="user_form" novalidate="novalidate">
+                    <form class="form-horizontal" role="form" method = "post" action = "/users/setlike"  id="user_form" novalidate="novalidate">
                         <div class="form-group input-lg">
                             <div class = "col-md-12 col-xs-12">
                                 <div class = "col-md-4 col-xs-4">
@@ -404,7 +404,7 @@ desired effect
 
         <!-- Main content -->
         <section class="content" style="padding-left: 0px; padding-right: 0px; padding-top: 10px">
-            <div class = "col-md-9 col-xs-9" style = "padding-left:20px; padding-right:5px">
+            <div class = "col-md-offset-1 col-md-8 col-xs-12" style = "padding-left:20px; padding-right:5px">
                 <div class="box box-default">
                     <!--<div class="box-header with-border">-->
                     <!--<h3 class="box-title">头条</h3>-->
@@ -412,8 +412,8 @@ desired effect
                     <!--<div class="box-body" id = "news_body1">
                             <div class = "col-md-12 col-xs-12" >
                                 <div class="col-md-3 col-xs-5" >
-                                    <a class="img-wrap" target="_blank" href="/">
-                                        <img alt="" src="{% static 'images/2.jpg'%}">
+                                    <a target="_blank" href="/">
+                                        <img alt="" class="img-responsive" src="{% static 'images/2.jpg'%}">
                                     </a>
                                 </div>
                                 <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" >

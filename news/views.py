@@ -25,7 +25,7 @@ def change2json(news_list):
         news_json['pic'] = news.pic
         print(news_json)
         news_json_list.append(news_json)
-    return  news_json_list
+    return news_json_list
 
 def update_setting(channel, likelist, num):
     if channel == 'finance':
@@ -113,7 +113,8 @@ def get_news(request):
         else:
             news_channel = Mynews.objects.filter(channel='hot')
             order_news = news_channel.order_by('-id')
-            news_list = order_news.all()[0:num]
+            end = begin + num
+            news_list = order_news.all()[begin:end]
     else:
         news_channel = Mynews.objects.filter(channel=channel)
         order_news = news_channel.order_by('-id')

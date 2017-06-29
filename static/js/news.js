@@ -17,19 +17,19 @@ var add_new = function(id, title, newsurl, img, src, channel, time, newsid){
     else
         imgname = "static/images/2.jpg";
     var myurl = "/newscontent/?newsid="+newsid;
-    var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a class="img-wrap" target="_blank" href="'+ myurl + '"> <img alt="" src='+ imgname +'>'+ '</a> </div>';
+    var imgdiv_ = '<div class="col-md-3 col-xs-5" > <a target="_blank" href="'+ myurl + '"> <img class="img-responsive" alt="" src='+ imgname +'>'+ '</a> </div>';
     var imgdiv = $(imgdiv_);
-    var textdiv = $(' <div class = "col-md-offset-1 col-xs-offset-1 col-md-8 col-xs-6" style = "padding-left: 40px"></div>');
-    var titlediv = $('<div class = "title-box col-md-10 col-xs-10" > <a class = "link-title" target="_blank" href="'+ myurl+'">'+ title +'</a> </div>');
+    var textdiv = $(' <div class = "col-md-offset-1 col-md-8 col-xs-7"></div>');
+    var titlediv = $('<div class = "title-box col-md-10 col-xs-12" > <a class = "link-title" target="_blank" href="'+ myurl+'">'+ title +'</a> </div>');
     var absdiv = $('<div>'+' '+'</div>');
-    var chdiv = $('<div class = "col-md-2 col-xs-3 ch-btn">分类:'+channel+'</div>');
+    var chdiv = $('<div class = "col-md-3">分类:'+channel+'</div>');
     if(src=='')
         src = "新浪网";
-    var srcdiv = $('<div class = "col-md-3 col-xs-3 src-btn">来源:'+src+'</div>');
+    var srcdiv = $('<div class = "col-md-4">来源:'+src+'</div>');
     if(time=='')
         time = '刚刚';
-    var timediv = $('<div class = "col-md-5 col-xs-5 time-btn">时间:'+time+'</div>');
-    var footdiv = $('<div class = "col-md-offset-1 col-xs-offset-1 col-md-11 col-xs-11 hidden-xs"></div>');
+    var timediv = $('<div class = "col-md-5">时间:'+time+'</div>');
+    var footdiv = $('<div class = "col-md-11 hidden-xs"></div>');
     var boxdiv = $('<div class = "col-md-12 col-xs-12" ></div>');
     footdiv.append(chdiv);
     footdiv.append(srcdiv);

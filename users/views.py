@@ -95,3 +95,15 @@ def Mylogout(request):
     """
     logout(request)
     return respond_assemble(code=0, msg='用户登出成功')
+
+@csrf_exempt
+@require_POST
+def setlike(request):
+    """
+    设置用户喜好
+    :param request:
+    :return:
+    """
+    finance = request.POST.get('finance')
+    print(finance)
+    return respond_assemble(code=0, msg='设置偏好成功')

@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^login$',views.Mylogin,name='users_login'),
     url(r'^logout$',views.Mylogout,name='users_logout'),
     url(r'^islogin$', views.islogin,name='is_user_is_login'),
+    url(r'^setlike$', views.setlike,name='set_user_like')
 ]
