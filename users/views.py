@@ -13,6 +13,8 @@ if sys.getdefaultencoding() != default_encoding:
     reload(sys)
     sys.setdefaultencoding(default_encoding)
 
+c_list = ['finance','sports','ent','mil','edu','tech','nba','stock']
+
 @require_POST
 @csrf_exempt
 def createUser(request):
@@ -104,6 +106,34 @@ def setlike(request):
     :param request:
     :return:
     """
-    finance = request.POST.get('finance')
-    print(finance)
-    return respond_assemble(code=0, msg='设置偏好成功')
+    for ch in c_list:
+        num = request.POST.get(ch)
+        if num is not None:
+            num = int(num)
+            likelist = UserSetting.objects.get(userid=request.user.id)
+
+            if ch == 'finance':
+                likelist.finance = likelist.finance+num
+                likelist.save()
+            elif ch == 'sports':
+                likelist.sports = likelist.sports+num
+                likelist.save()
+            elif ch == 'ent':
+                likelist.ent = likelist.ent+num
+                likelist.save()
+            elif ch == 'mil':
+                likelist.mil = likelist.mil+num
+                likelist.save()
+            elif ch == 'edu':
+                likelist.edu = likelist.edu+num
+                likelist.save()
+            elif ch == 'tech':
+                likelist.tech = likelist.tech+num
+                likelist.save()
+            elif ch == 'nba':
+                likelist.nba = likelist.nba+num
+                likelist.save()
+            elif ch == 'stock':
+                likelist.stock = likelist.stock+num
+                likelist.save()
+    return render(request,"index.html")

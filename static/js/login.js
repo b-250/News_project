@@ -26,6 +26,8 @@ var is_login = function(){
 $().ready(function () {
     $("#user-menu").hide();
     is_login();
+
+
     $("#login_form").validate({
         submitHandler : function (form) {
             //alert("post");
